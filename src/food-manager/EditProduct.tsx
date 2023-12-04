@@ -1,4 +1,4 @@
-import { Autocomplete, Box, Button, createFilterOptions, FilterOptionsState, Grid, Input, TextField, Typography } from "@mui/material";
+import { Autocomplete, Box, Button, createFilterOptions, FilterOptionsState, Grid, TextField, Typography } from "@mui/material";
 import { random, times, toNumber } from "lodash";
 import { useState } from "react";
 import { Product, Store, UpdateProduct, UpdateStore } from "./common-types";
