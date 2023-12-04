@@ -1,12 +1,12 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Box, Container, Modal, SxProps } from '@mui/material';
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect,  useState } from 'react';
 import styles from './App.module.css';
-import CheckOff from './CheckOffList';
-import { AppData, FoodItem } from './model/Data';
+//import CheckOff from './CheckOffList';
+import { AppData } from './model/Data';
 import CssBaseline from '@mui/material/CssBaseline';
-import { AppDataStruct, Product, Store } from './common-types';
-import { initFirebase, setAppDataPair, pushShoppingListItem, pushProductData, setSetStores, pushStoreData, setSetProducts } from './model/firebase-connection';
+import { Product, Store } from './common-types';
+import { initFirebase, setAppDataPair, pushProductData, setSetStores, pushStoreData, setSetProducts } from './model/firebase-connection';
 import { EditProduct } from './EditProduct';
 import { ListProducts } from './ListProducts';
 
@@ -34,14 +34,14 @@ function App() {
 
   //useEffect(() => { pushAppData(); }, [appData]);
 
-  function setChecked(item: FoodItem, checked: boolean) {
-    if (item.checked === checked) return;
-    const newItem = { ...item, checked: checked };
-    pushShoppingListItem(newItem);
-  }
+  //function setChecked(item: FoodItem, checked: boolean) {
+  //  if (item.checked === checked) return;
+  //  const newItem = { ...item, checked: checked };
+  //  pushShoppingListItem(newItem);
+  //}
 
 
-  const appDataStruct = useMemo(() => ({ appData: appData, setChecked: setChecked } as AppDataStruct), [appData]);
+  //const appDataStruct = useMemo(() => ({ appData: appData, setChecked: setChecked } as AppDataStruct), [appData]);
 
   let darkTheme = createTheme({
     palette: {

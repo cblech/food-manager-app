@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, doc, DocumentData, Firestore, getDocs, getFirestore, onSnapshot, QuerySnapshot, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc,  Firestore,  getFirestore, onSnapshot,  setDoc } from "firebase/firestore";
 import { AppDataPair, Product, Store, UpdateProduct, UpdateStore } from "../common-types";
 import { FoodItem } from "./Data";
 
@@ -43,7 +43,7 @@ export function initFirebase() {
 
     // Load initial data from Firestore
     // pullShoppingListData();
-    const _unsub = onSnapshot(collection(firestore, "shopping-list"), (snapshot) => {
+    onSnapshot(collection(firestore, "shopping-list"), (snapshot) => {
         let appData = appDataPair.appData;
 
         for (const doc of snapshot.docs) {
@@ -54,7 +54,7 @@ export function initFirebase() {
         appDataPair.setAppData(appData);
     }); 
 
-    const _unsub2 = onSnapshot(collection(firestore, "stores"), (snapshot) => {
+   onSnapshot(collection(firestore, "stores"), (snapshot) => {
         let stores: Store[] = [];
         for (const doc of snapshot.docs) {
             const data = doc.data() as { name: string };
@@ -63,7 +63,7 @@ export function initFirebase() {
         setStores(stores);
     });
 
-    const _unsub3 = onSnapshot(collection(firestore, "products"), (snapshot) => {
+    onSnapshot(collection(firestore, "products"), (snapshot) => {
         let products: Product[] = [];
         for (const doc of snapshot.docs) {
             const data = doc.data() as { name: string, storeId: string | null, notes: string, setStored: number, realStored: number };
